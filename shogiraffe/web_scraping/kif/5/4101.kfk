@@ -1,0 +1,698 @@
+<gameAnalysis>
+  <kifu>N+Human
+N-Human
+PI
++7776FU,T0
+-8384FU,T0
++7978GI,T0
+-3334FU,T0
++7877GI,T0
+-7162GI,T0
++2726FU,T0
+-3142GI,T0
++3948GI,T0
+-4132KI,T0
++4746FU,T0
+-5354FU,T0
++4847GI,T0
+-5141OU,T0
++3736FU,T0
+-7374FU,T0
++6978KI,T0
+-6253GI,T0
++4958KI,T0
+-8485FU,T0
++2625FU,T0
+-4233GI,T0
++5969OU,T0
+-2231KA,T0
++4756GI,T0
+-3142KA,T0
++9796FU,T0
+-9394FU,T0
++1716FU,T0
+-1314FU,T0
++8879KA,T0
+-7475FU,T0
++7675FU,T0
+-5364GI,T0
++7574FU,T0
+-5455FU,T0
++5647GI,T0
+-6465GI,T0
++6766FU,T0
+-6574GI,T0
++5867KI,T0
+-7475GI,T0
++5756FU,T0
+-5556FU,T0
++4756GI,T0
+-0076FU,T0
++7776GI,T0
+-8586FU,T0
++8786FU,T0
+-8286HI,T0
++7687GI,T0
+-8682HI,T0
++0088FU,T0
+-0086FU,T0
++8776GI,T0
+-7576GI,T0
++6776KI,T0
+-0087GI,T0
++8887FU,T0
+-8687TO,T0
++0084FU,T0
+-8786TO,T0
++5667GI,T0
+-8676TO,T0
++6776GI,T0
+-0057FU,T0
++7867KI,T0
+-0086KI,T0
++7665GI,T0
+-8284HI,T0
++0053FU,T0
+-4253KA,T0
++0088FU,T0
+-8173KE,T0
++6556GI,T0
+-0076FU,T0
++7957KA,T0
+-5375KA,T0
++0078FU,T0
+-0055FU,T0
++5647GI,T0
+-6152KI,T0
++2524FU,T0
+-2324FU,T0
++0025FU,T0
+-2425FU,T0
++2825HI,T0
+-0024FU,T0
++2555HI,T0
+-8685KI,T0
++5748KA,T0
+-7564KA,T0
++5559HI,T0
+-8575KI,T0
++0087GI,T0
+-0086FU,T0
++8798GI,T0
+-8481HI,T0
++0054FU,T0
+-3344GI,T0
++4826KA,T0
+-3435FU,T0
++4645FU,T0
+-2425FU,T0
++4544FU,T0
+-2526FU,T0
++0053GI,T0
+-0048KA,T0
++5352GI,T0
+-4152OU,T0
++5958HI,T0
+-7566KI,T0
++0053KI,T0
+</kifu>
+  <scoreList>
+  </scoreList>
+  <engineName>YaneuraOu KPPT 4.88 64AVX2 TOURNAMENT</engineName>
+  <timePerMove>2</timePerMove>
+  <analysisScoreList>51,-111,68,-87,0,-17,27,-52,54,-31,-1,115,-55,96,-18,105,-65,97,-86,138,-103,136,74,34,-23,6,-27,44,6,-1,17,83,100,13,-66,38,-20,20,-46,97,-114,97,48,198,-36,58,-24,234,-37,-37,78,-52,125,187,-118,306,-318,361,-365,172,-117,223,-76,536,-624,642,-495,454,-556,666,-482,597,-471,614,-411,631,-570,698,-636,893,-910,971,-130,403,-282,351,-500,558,-601,497,-423,468,-504,337,-397,284,-53,132,-184,96,155,-121,52,-1,480,-835,944,-967,2161,-2148,2140,-1293,2816</analysisScoreList>
+  <analysisInfoList>
+    <analysisInfo>
+      <move>Starting Position</move>
+      <score>
+      </score>
+      <pv>
+      </pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>   1  P7g-7f</move>
+      <score>51</score>
+      <pv>P2g-2f P8c-8d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>   2  P8c-8d</move>
+      <score>111</score>
+      <pv>P8c-8d P2g-2f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>   3  S7i-7h</move>
+      <score>68</score>
+      <pv>P2g-2f P8d-8e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>   4  P3c-3d</move>
+      <score>87</score>
+      <pv>P3c-3d B8h-7g G4a-3b P2g-2f B2b-3c P3g-3f P7c-7d S3i-4h S3a-4b S4h-3g S7a-6b S3g-4f B3cx7g+ S7hx7g S6b-7c P2f-2e P4c-4d G6i-7h P8d-8e P9g-9f S4b-4c K5i-6h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>   5  S7h-7g</move>
+      <score>0</score>
+      <pv>B8h-7g G4a-3b P2g-2f S3a-4b none (100.00%)</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>   6  S7a-6b</move>
+      <score>17</score>
+      <pv>P7c-7d P5g-5f P8d-8e G6i-7h N8a-7c P2g-2f S3a-3b P2f-2e B2b-4d B8h-7i G6a-6b P6g-6f R8b-8a P2e-2d P2cx2d R2hx2d P8e-8f P8gx8f P*8g G7hx8g K5a-4b B7i-6h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>   7  P2g-2f</move>
+      <score>27</score>
+      <pv>P2g-2f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>   8  S3a-4b</move>
+      <score>52</score>
+      <pv>P8d-8e P2f-2e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>   9  S3i-4h</move>
+      <score>54</score>
+      <pv>P2f-2e S4b-3c</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  10  G4a-3b</move>
+      <score>31</score>
+      <pv>P8d-8e G6i-7h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  11  P4g-4f</move>
+      <score>-1</score>
+      <pv>P2f-2e P8d-8e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  12  P5c-5d</move>
+      <score>-115</score>
+      <pv>P7c-7d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  13  S4h-4g</move>
+      <score>-55</score>
+      <pv>S4h-4g P8d-8e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  14  K5a-4a</move>
+      <score>-96</score>
+      <pv>P8d-8e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  15  P3g-3f</move>
+      <score>-18</score>
+      <pv>G6i-7h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  16  P7c-7d</move>
+      <score>-105</score>
+      <pv>P7c-7d G6i-7h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  17  G6i-7h</move>
+      <score>-65</score>
+      <pv>P2f-2e N8a-7c</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  18  S6b-5c</move>
+      <score>-97</score>
+      <pv>P8d-8e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  19  G4i-5h</move>
+      <score>-86</score>
+      <pv>N2i-3g S5c-6d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  20  P8d-8e</move>
+      <score>-138</score>
+      <pv>P8d-8e N2i-3g</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  21  P2f-2e</move>
+      <score>-103</score>
+      <pv>N2i-3g P4c-4d R2h-2i G6a-5b K5i-4h S4b-4c P6g-6f N8a-7c S7g-6h P8e-8f P8gx8f R8bx8f P*8g R8f-8a S6h-6g S5c-6d P5g-5f P9c-9d B8h-7i B2b-3a P1g-1f P9d-9e P1f-1e B3a-4b</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  22  S4b-3c</move>
+      <score>-136</score>
+      <pv>B2b-3c P9g-9f P4c-4d N2i-3g S4b-4c K5i-4h G6a-5b P1g-1f B3c-4b R2h-2i P1c-1d P6g-6f P9c-9d P6f-6e N8a-7c S7g-6f P8e-8f P8gx8f R8bx8f P*8g R8f-8b P5g-5f N2a-3c N8i-7g R8b-8a B8h-7i</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  23  K5i-6i</move>
+      <score>74</score>
+      <pv>N2i-3g S5c-6d S7g-6f B2b-3a R2h-2i P4c-4d K5i-4h P1c-1d P5g-5f G6a-5b P5f-5e P5dx5e S6fx5e G3b-4c S5ex6d P6cx6d P1g-1f P9c-9d B8h-6f K4a-3b P4f-4e P4dx4e N3gx4e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  24  B2b-3a</move>
+      <score>-34</score>
+      <pv>S5c-6d S7g-6f N8a-7c B8h-7g G6a-5b P5g-5f B2b-3a N2i-3g P4c-4d P5f-5e P5dx5e P4f-4e B3a-4b B7g-6h P4dx4e N3gx4e S3c-4d P*5c G5b-4c P2e-2d P2cx2d B6hx2d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  25  S4g-5f</move>
+      <score>-23</score>
+      <pv>N2i-3g S5c-6d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  26  B3a-4b</move>
+      <score>-6</score>
+      <pv>S5c-6d N2i-3g</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  27  P9g-9f</move>
+      <score>-27</score>
+      <pv>P6g-6f N8a-7c</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  28  P9c-9d</move>
+      <score>-44</score>
+      <pv>G6a-5b S7g-6f S5c-6d S5f-6e P7d-7e P7fx7e S6dx6e S6fx6e P8e-8f P8gx8f R8bx8f P*8g R8fx4f S*4g R4f-4e P2e-2d P2cx2d S6ex5d R4ex7e B8h-6f R7e-8e N2i-3g</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  29  P1g-1f</move>
+      <score>6</score>
+      <pv>S5f-6e G6a-5b</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  30  P1c-1d</move>
+      <score>1</score>
+      <pv>G6a-5b S7g-6f N8a-7c N2i-3g S5c-6d S5f-4e G5b-5c S4e-5f G5c-5b</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  31  B8h-7i</move>
+      <score>17</score>
+      <pv>S7g-6f G6a-5b</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  32  P7d-7e</move>
+      <score>-83</score>
+      <pv>S5c-6d P6g-6f P7d-7e S5f-6g K4a-3a P7fx7e S6dx7e B7i-6h K3a-2b N2i-3g P4c-4d P*7f P8e-8f P8gx8f S7ex8f S7gx8f B4bx8f B6hx8f R8bx8f P*8g R8f-8b B*4a P*8f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  33  P7fx7e</move>
+      <score>100</score>
+      <pv>P7fx7e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  34  S5c-6d</move>
+      <score>-13</score>
+      <pv>S5c-6d P7e-7d P5d-5e S5f-4e S6d-7e P3f-3e P3dx3e P*3d S3c-4d S4e-5d G6a-5b P4f-4e S4d-5c S5d-6e P3e-3f S6e-7f S5c-6d P6g-6f K4a-3a B7i-6h S7ex7f S7gx7f P3f-3g+ N2ix3g P*3f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  35  P7e-7d</move>
+      <score>-66</score>
+      <pv>P7e-7d P5d-5e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  36  P5d-5e</move>
+      <score>-38</score>
+      <pv>P5d-5e S5f-4e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  37  S5f-4g</move>
+      <score>-20</score>
+      <pv>S5f-4e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  38  S6d-6e</move>
+      <score>-20</score>
+      <pv>S6d-6e B7i-6h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  39  P6g-6f</move>
+      <score>-46</score>
+      <pv>N2i-3g S6ex7d B7i-6h K4a-3a P6g-6f P4c-4d P5g-5f P5ex5f S4gx5f P8e-8f S7gx8f P*8h G7hx8h P3d-3e G5h-4g P3ex3f G4gx3f R8b-5b P*5d R5bx5d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  40  S6ex7d</move>
+      <score>-97</score>
+      <pv>S6ex7d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  41  G5h-6g</move>
+      <score>-114</score>
+      <pv>B7i-6h P6c-6d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  42  S7d-7e</move>
+      <score>-97</score>
+      <pv>K4a-3a N2i-3g P6c-6d P5g-5f P6d-6e P3f-3e P8e-8f P8gx8f P*8e P8fx8e P6ex6f G6gx6f N8a-7c P3ex3d S3cx3d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  43  P5g-5f</move>
+      <score>48</score>
+      <pv>B7i-6h P9d-9e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  44  P5ex5f</move>
+      <score>-198</score>
+      <pv>P8e-8f P8gx8f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  45  S4gx5f</move>
+      <score>-36</score>
+      <pv>S4gx5f P9d-9e P9fx9e P8e-8f P8gx8f P*9g L9ix9g S7ex8f S7gx8f R8bx8f P*8g R8f-8d G7h-8h K4a-3a N2i-3g P*9h G8hx9h P*8f P8gx8f R8dx8f P*8g R8f-8d N3g-4e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  46  P*7f</move>
+      <score>-58</score>
+      <pv>P9d-9e P9fx9e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  47  S7gx7f</move>
+      <score>-24</score>
+      <pv>S7gx7f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  48  P8e-8f</move>
+      <score>-234</score>
+      <pv>S7ex7f G6gx7f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  49  P8gx8f</move>
+      <score>-37</score>
+      <pv>P8gx8f S7ex7f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  50  R8bx8f</move>
+      <score>37</score>
+      <pv>R8bx8f S7f-8g</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  51  S7f-8g</move>
+      <score>78</score>
+      <pv>S7f-8g</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  52  R8f-8b</move>
+      <score>52</score>
+      <pv>R8f-8b P*8f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  53  P*8h</move>
+      <score>125</score>
+      <pv>P*8f P9d-9e P9fx9e P*9g P*5d S7ex8f S8gx8f R8bx8f P*8g R8f-8d B7ix9g B4bx9g+ L9ix9g P*5b S*7e R8d-8e P*7f S*9h P8g-8f R8e-8b K6i-7i P*8g N2i-3g</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  54  P*8f</move>
+      <score>-187</score>
+      <pv>P*8f S8g-9h P9d-9e P*7f S7e-8d N2i-3g P4c-4d P4f-4e B4b-6d P*5e P9ex9f P6f-6e B6d-7c B7i-4f S8d-9e P7f-7e K4a-3a P4ex4d S3cx4d P2e-2d P2cx2d B4fx2d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  55  S8g-7f</move>
+      <score>-118</score>
+      <pv>S8g-9h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  56  S7ex7f</move>
+      <score>-306</score>
+      <pv>S7ex7f G6gx7f P9d-9e P2e-2d P2cx2d P*2b G3bx2b P*5d R8b-8d P5d-5c+ B4bx5c N2i-3g P9ex9f N3g-4e B5c-7a N4ex3c+ N2ax3c B7i-5g R8d-5d S*6e R5d-5a R2hx2d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  57  G6gx7f</move>
+      <score>-318</score>
+      <pv>G6gx7f P9d-9e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  58  S*8g</move>
+      <score>-361</score>
+      <pv>P9d-9e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  59  P8hx8g</move>
+      <score>-365</score>
+      <pv>P8hx8g P8fx8g+</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  60  P8fx8g+</move>
+      <score>-172</score>
+      <pv>P8fx8g+ P*8d +P8gx7h K6ix7h R8bx8d P*8e R8d-8b P*7e G*6d N2i-3g G6dx7e G7fx7e B4bx7e G*7f B7e-4b N3g-4e P*8h K7hx8h P*7e G7f-8f G*7f G8fx7f P7ex7f G*5c</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  61  P*8d</move>
+      <score>-117</score>
+      <pv>P*8d +P8g-8f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  62  +P8g-8f</move>
+      <score>-223</score>
+      <pv>+P8gx7h K6ix7h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  63  S5f-6g</move>
+      <score>-76</score>
+      <pv>G7f-6e P*7g G7h-6g R8bx8d S*7e R8d-8b P*8c R8b-7b P*5c +P8f-8g N8ix7g B4bx5c S7e-7d B5c-8f S7dx6c+ R7bx7g+ G6gx7g B8fx7g+ K6i-5h P*6b +S6c-6d +B7gx9i</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  64  +P8fx7f</move>
+      <score>-536</score>
+      <pv>+P8fx7f S6gx7f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  65  S6gx7f</move>
+      <score>-624</score>
+      <pv>S6gx7f K4a-3a N2i-3g P*5g G7h-7g N8a-7c P*5c P*7e S7f-8g R8bx8d K6i-7h G*7f P*8f R8d-5d S*4e G7fx7g N8ix7g</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  66  P*5g</move>
+      <score>-642</score>
+      <pv>K4a-3a P3f-3e P*5g G7h-7g R8bx8d P*8e R8d-5d S*6g B4b-6d K6i-7h P*8f S7f-6e B6dx4f S*3g G*8g G7gx8g P8fx8g+ K7hx8g</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  67  G7h-6g</move>
+      <score>-495</score>
+      <pv>S*6g P*7e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  68  G*8f</move>
+      <score>-454</score>
+      <pv>P*7e S7f-8g R8bx8d P*8e R8dx8e P*8f R8e-8b G6gx5g G*7f S8gx7f P7ex7f S*8g S*7g S*9g P*8h S9gx8h S7gx8f+ S8gx8f R8bx8f P*8g R8f-8d K6i-7h P*8f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  69  S7f-6e</move>
+      <score>-556</score>
+      <pv>S*5f R8bx8d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  70  R8bx8d</move>
+      <score>-666</score>
+      <pv>R8bx8d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  71  P*5c</move>
+      <score>-482</score>
+      <pv>P*5c</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  72  B4bx5c</move>
+      <score>-597</score>
+      <pv>B4bx5c P*5d B5c-4b S*5c P*7h B7ix5g G8f-7f S6ex7f R8dx8i+ K6i-5h P*5b S5cx4b+ G3bx4b P*8f +R8ix9i P2e-2d P2cx2d B*8c N*5e B8cx6a+ S*4g K5h-6h P7h-7i+ P5d-5c+</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  73  P*8h</move>
+      <score>-471</score>
+      <pv>P2e-2d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  74  N8a-7c</move>
+      <score>-614</score>
+      <pv>P*7h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  75  S6e-5f</move>
+      <score>-411</score>
+      <pv>B7ix5g</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  76  P*7f</move>
+      <score>-631</score>
+      <pv>P*7h R2hx7h P*7g R7h-4h P*8g B7ix5g P8gx8h+ K6i-5h R8d-7d P*5d B5c-7e N2i-3g +P8hx8i N3g-4e S3c-4d P2e-2d P2cx2d P5d-5c+ S4dx5c</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  77  B7ix5g</move>
+      <score>-570</score>
+      <pv>P2e-2d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  78  B5c-7e</move>
+      <score>-698</score>
+      <pv>P7f-7g+ N8ix7g P*5e S5fx5e P*7f N7g-6e B5c-7e G6g-5f G8f-7g N6ex7c G7g-6g N7cx6a+ P7f-7g+ B5g-7i K4a-3a K6i-5i +P7g-6h K5i-4i +P6hx7i G5f-6e +P7i-7h N*4e R8dx8h+ G6ex7e +P7h-6h K4i-3h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  79  P*7h</move>
+      <score>-636</score>
+      <pv>P2e-2d P2cx2d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  80  P*5e</move>
+      <score>-893</score>
+      <pv>P*5e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  81  S5f-4g</move>
+      <score>-910</score>
+      <pv>S5f-4g G8fx9f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  82  G6a-5b</move>
+      <score>-971</score>
+      <pv>G8fx9f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  83  P2e-2d</move>
+      <score>-130</score>
+      <pv>P*5c G5b-6b</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  84  P2cx2d</move>
+      <score>-403</score>
+      <pv>S3cx2d P*5c</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  85  P*2e</move>
+      <score>-282</score>
+      <pv>P*5c G5b-4b</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  86  P2dx2e</move>
+      <score>-351</score>
+      <pv>G8fx9f L9ix9f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  87  R2hx2e</move>
+      <score>-500</score>
+      <pv>N2i-3g S3c-4b</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  88  P*2d</move>
+      <score>-558</score>
+      <pv>P*2d R2ex5e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  89  R2ex5e</move>
+      <score>-601</score>
+      <pv>R2ex5e G8f-8e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  90  G8f-8e</move>
+      <score>-497</score>
+      <pv>G8f-8e B5g-4h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  91  B5g-4h</move>
+      <score>-423</score>
+      <pv>B5g-4h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  92  B7e-6d</move>
+      <score>-468</score>
+      <pv>S3c-4d R5e-5g P*5f S4gx5f P*5e S5f-4g P9d-9e P9fx9e K4a-3a P4f-4e S4dx4e R5gx5e S4e-5d R5e-5g P*5e R5g-5h L9ax9e L9ix9e G8ex9e G6gx7f B7e-4b</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  93  R5e-5i</move>
+      <score>-504</score>
+      <pv>R5e-5h G8e-7e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  94  G8e-7e</move>
+      <score>-337</score>
+      <pv>G8e-7e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  95  S*8g</move>
+      <score>-397</score>
+      <pv>S*8g S3c-4d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  96  P*8f</move>
+      <score>-284</score>
+      <pv>S3c-4d P6f-6e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  97  S8g-9h</move>
+      <score>-53</score>
+      <pv>S8gx7f G7ex7f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  98  R8d-8a</move>
+      <score>-132</score>
+      <pv>R8d-8a P*5d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move>  99  P*5d</move>
+      <score>-184</score>
+      <pv>P*5d G3b-4b</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 100  S3c-4d</move>
+      <score>-96</score>
+      <pv>G3b-4b P*2b</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 101  B4h-2f</move>
+      <score>155</score>
+      <pv>P4f-4e</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 102  P3d-3e</move>
+      <score>121</score>
+      <pv>G3b-4b P*2b</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 103  P4f-4e</move>
+      <score>52</score>
+      <pv>P4f-4e B6dx1i+ P4ex4d L*5e S*5f L5ex5f G6gx5f P4cx4d S*5c S*6g B2fx3e P*3d G5f-5g S6gx7h K6ix7h P7f-7g+ N8ix7g</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 104  P2d-2e</move>
+      <score>1</score>
+      <pv>P*5h R5ix5h B6dx1i+ P4ex4d L*5e S*5f +B1ix2i B2fx3e +B2ix4g S5fx4g L5ex5h+ S4gx5h P8f-8g+ P8hx8g R*3i L*4i S*4g S*5i S4gx5h+ S5ix5h</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 105  P4ex4d</move>
+      <score>480</score>
+      <pv>P4ex4d P2ex2f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 106  P2ex2f</move>
+      <score>835</score>
+      <pv>P2ex2f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 107  S*5c</move>
+      <score>944</score>
+      <pv>S*5c B*3d</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 108  B*4h</move>
+      <score>967</score>
+      <pv>B*3d S5cx5b+</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 109  S5cx5b</move>
+      <score>2161</score>
+      <pv>R5i-5h P*5f</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 110  K4ax5b</move>
+      <score>2148</score>
+      <pv>K4ax5b S*5c K5b-4a R5i-5h B4hx6f+ G6gx6f P*5g R5h-6h S*5h S4gx5h P5gx5h+ K6ix5h G7ex6f R6hx6f B6dx1i+ P4dx4c+ L*5e K5h-6g G3bx4c R6fx6c+ P7f-7g+ K6gx7g</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 111  R5i-5h</move>
+      <score>2140</score>
+      <pv>S*5c K5b-4a R5i-5h B4hx6f+ G6gx6f P*5g R5h-6h S*5h S4gx5h P5gx5h+ K6ix5h P*5g K5h-4h G7ex6f R6hx6f S*4f B*7d K4a-3a P*2c B6dx5c R6fx4f B5cx4d B7dx6c+ G*5e R4fx7f P2f-2g+ +B6cx8a</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 112  G7ex6f</move>
+      <score>1293</score>
+      <pv>S*5g S*5c B6dx5c P5dx5c+ K5bx5c G6gx5g B4h-3i+ P*5d K5cx5d B*6b S*4i B6bx7c+ S4ix5h S4gx5h K5dx4d P3fx3e P*5f G5gx5f +B3i-4h +B7c-5e K4d-5c</pv>
+    </analysisInfo>
+    <analysisInfo>
+      <move> 113  G*5c</move>
+      <score>2816</score>
+      <pv>G*5c K5b-4a</pv>
+    </analysisInfo>
+  </analysisInfoList>
+</gameAnalysis>
