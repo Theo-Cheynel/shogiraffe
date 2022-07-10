@@ -1,5 +1,6 @@
 import random
 
+
 class RandomAgent:
     """
     An agent that evaluates the board with a neural network.
@@ -7,7 +8,6 @@ class RandomAgent:
       - supervised learning, with Elmo as a mentor
       - reinforcement learning, with the TD-Leaf(lambda) algorithm
     """
-
 
     def __init__(self):
         pass

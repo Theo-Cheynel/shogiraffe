@@ -1,4 +1,5 @@
-import math, copy
+import copy
+import math
 
 
 class MinimaxAgent:
@@ -8,7 +9,6 @@ class MinimaxAgent:
       - supervised learning, with Elmo as a mentor
       - reinforcement learning, with the TD-Leaf(lambda) algorithm
     """
-
 
     def __init__(self, evaluation_network, side=0, depth=3):
         """

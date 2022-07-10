@@ -1,7 +1,7 @@
 # Imports
 import shogi
-from pytorch_lightning import LightningModule, Trainer
 import torch
+from pytorch_lightning import LightningModule, Trainer
 
 
 class NeuralEvaluator(LightningModule):
@@ -40,7 +40,7 @@ class NeuralEvaluator(LightningModule):
 
         mse_loss = torch.nn.L1Loss()(scores, batch[:, 0:1])
 
-        self.log('train_mae_loss', mse_loss, on_step=True, on_epoch=False)
+        self.log("train_mae_loss", mse_loss, on_step=True, on_epoch=False)
         return mse_loss
 
     def validation_step(self, batch, batch_idx):
@@ -48,7 +48,7 @@ class NeuralEvaluator(LightningModule):
 
         mse_loss = torch.nn.L1Loss()(scores, batch[:, 0:1])
 
-        self.log('val_mae_loss', mse_loss, on_step=False, on_epoch=True)
+        self.log("val_mae_loss", mse_loss, on_step=False, on_epoch=True)
         return mse_loss
 
     def configure_optimizers(self):
@@ -57,5 +57,5 @@ class NeuralEvaluator(LightningModule):
         return {
             "optimizer": optimizer,
             "lr_scheduler": lr_scheduler,
-            "monitor": "val_mae_loss"
+            "monitor": "val_mae_loss",
         }

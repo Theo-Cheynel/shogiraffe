@@ -1,11 +1,10 @@
 import os
 
-from shogiraffe.evaluation.neural_evaluator.neural_evaluation import NeuralEvaluator
-from shogiraffe.evaluation.neural_evaluator.data.data import ShogiDataModule
-
 import pytorch_lightning as pl
 from pytorch_lightning.loggers import WandbLogger
 
+from shogiraffe.evaluation.neural_evaluator.data.data import ShogiDataModule
+from shogiraffe.evaluation.neural_evaluator.neural_evaluation import NeuralEvaluator
 
 if __name__ == "__main__":
     data_module = ShogiDataModule(
@@ -22,7 +21,7 @@ if __name__ == "__main__":
     trainer = pl.Trainer(
         logger=wandb_logger,
         callbacks=[checkpoint_callback],
-        accelerator='cpu',
-        devices=1
+        accelerator="cpu",
+        devices=1,
     )
     trainer.fit(model, data_module)

@@ -1,26 +1,39 @@
 # Imports
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-import tensorflow as tf
-import sys
 import math
-import cv2 as cv
-import numpy as np
 import os
 import random
+import sys
 
-from tensorflow.keras import datasets, layers, models, callbacks
+import cv2 as cv
 import matplotlib.pyplot as plt
-
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import callbacks, datasets, layers, models
 
 # The root folder, used for saving weights and reading images
 ROOT_FOLDER = os.path.dirname(os.path.realpath(__file__)) + "/dataset"
 
-categories = ['king', 'kingUD', 'gold', 'goldUD', 'silver', 'silverUD',
-              'knight', 'knightUD', 'lance', 'lanceUD', 'bishop', 'bishopUD',
-              'rook', 'rookUD', 'pawn', 'pawnUD', 'empty']
-
-
+categories = [
+    "king",
+    "kingUD",
+    "gold",
+    "goldUD",
+    "silver",
+    "silverUD",
+    "knight",
+    "knightUD",
+    "lance",
+    "lanceUD",
+    "bishop",
+    "bishopUD",
+    "rook",
+    "rookUD",
+    "pawn",
+    "pawnUD",
+    "empty",
+]
 
 
 def images_to_numpy():
@@ -41,27 +54,26 @@ def images_to_numpy():
 
     train_images, train_labels, test_images, test_labels = [], [], [], []
 
-    for cat in categories :
+    for cat in categories:
         print("Now loading category :'" + cat + "'")
 
         # Load the training data for given category
-        files = os.listdir(ROOT_FOLDER+'/training_data/'+cat)
+        files = os.listdir(ROOT_FOLDER + "/training_data/" + cat)
         random.shuffle(files)
 
         # Add each image to the training data
-        for f in files :
-            img = cv.imread(ROOT_FOLDER+'/training_data/'+cat+'/'+f, cv.IMREAD_GRAYSCALE)/255
+        for f in files:
+            img = cv.imread(ROOT_FOLDER + "/training_data/" + cat + "/" + f, cv.IMREAD_GRAYSCALE) / 255
             train_images.append(img)
             train_labels.append(categories.index(cat))
 
-
         # Load the testing data for given category
-        files = os.listdir(ROOT_FOLDER+'/testing_data/'+cat)
+        files = os.listdir(ROOT_FOLDER + "/testing_data/" + cat)
         random.shuffle(files)
 
         # Add each image to the testing data
-        for f in files :
-            img = cv.imread(ROOT_FOLDER+'/testing_data/'+cat+'/'+f, cv.IMREAD_GRAYSCALE)/255
+        for f in files:
+            img = cv.imread(ROOT_FOLDER + "/testing_data/" + cat + "/" + f, cv.IMREAD_GRAYSCALE) / 255
             test_images.append(img)
             test_labels.append(categories.index(cat))
 
@@ -98,20 +110,19 @@ def build_neural_network():
 
     model = models.Sequential()
 
-    model.add(layers.Conv2D(48, (3, 3), activation='relu', input_shape=(48, 48, 1)))
+    model.add(layers.Conv2D(48, (3, 3), activation="relu", input_shape=(48, 48, 1)))
     model.add(layers.MaxPooling2D((2, 2)))
-    model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+    model.add(layers.Conv2D(64, (3, 3), activation="relu"))
     model.add(layers.MaxPooling2D((2, 2)))
-    model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+    model.add(layers.Conv2D(64, (3, 3), activation="relu"))
 
     model.add(layers.Flatten())
-    model.add(layers.Dense(64, activation='relu'))
-    model.add(layers.Dense(17, activation='softmax'))
+    model.add(layers.Dense(64, activation="relu"))
+    model.add(layers.Dense(17, activation="softmax"))
 
     print(model.summary())
 
     return model
-
 
 
 def train_neural_network(model, data):
@@ -130,22 +141,22 @@ def train_neural_network(model, data):
     (train_images, train_labels, test_images, test_labels) = data
 
     # The path for the checkpoint
-    checkpoint_path = ROOT_FOLDER+"/checkpoints/cp.ckpt"
+    checkpoint_path = ROOT_FOLDER + "/checkpoints/cp.ckpt"
 
     # The callback for model saving
-    cp_callback = callbacks.ModelCheckpoint(filepath=checkpoint_path,
-                                            save_weights_only=True,
-                                            verbose=1)
+    cp_callback = callbacks.ModelCheckpoint(filepath=checkpoint_path, save_weights_only=True, verbose=1)
 
     # Compile our CNN
-    model.compile(optimizer='adam',
-                  loss='sparse_categorical_crossentropy',
-                  metrics=['accuracy'])
+    model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
 
     # Start training
-    history = model.fit(train_images, train_labels, epochs=5,
-                        validation_data=(test_images, test_labels),
-                        callbacks=[cp_callback])
+    history = model.fit(
+        train_images,
+        train_labels,
+        epochs=5,
+        validation_data=(test_images, test_labels),
+        callbacks=[cp_callback],
+    )
 
     # Returned our trained model
     return model

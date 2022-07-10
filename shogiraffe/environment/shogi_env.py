@@ -1,8 +1,10 @@
-import pathlib, os, time
+import os
+import pathlib
+import time
 
-import pygame
 import gym
 import numpy as np
+import pygame
 import shogi
 
 
@@ -19,31 +21,33 @@ Y_OFFSET = 120
 TILE_SIZE = 80
 
 FILES = {
-    'p': 'pawn',
-    'l': 'lance',
-    'n': 'knight',
-    's': 'silver',
-    'g': 'gold',
-    'b': 'bishop',
-    'r': 'rook',
-    'k': 'king',
+    "p": "pawn",
+    "l": "lance",
+    "n": "knight",
+    "s": "silver",
+    "g": "gold",
+    "b": "bishop",
+    "r": "rook",
+    "k": "king",
 }
 
 PIECE_SYMBOLS = {
-    1: 'p',
-    2: 'l',
-    3: 'n',
-    4: 's',
-    5: 'g',
-    6: 'b',
-    7: 'r',
-    8: 'k',
+    1: "p",
+    2: "l",
+    3: "n",
+    4: "s",
+    5: "g",
+    6: "b",
+    7: "r",
+    8: "k",
 }
+
 
 class ShogiEnv(gym.Env):
     """
     A reinforcement learning environment that simulates a shogi board.
     """
+
     metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 60}
 
     def __init__(self):
@@ -119,13 +123,17 @@ class ShogiEnv(gym.Env):
 
                 # If there's a piece on this case
                 if piece is not None:
-                    x = X_OFFSET + TILE_SIZE * column + int((480 - 403)/480/2 * TILE_SIZE) + 0.1 * TILE_SIZE
+                    x = X_OFFSET + TILE_SIZE * column + int((480 - 403) / 480 / 2 * TILE_SIZE) + 0.1 * TILE_SIZE
                     y = Y_OFFSET + TILE_SIZE * line + 0.1 * TILE_SIZE
 
                     # Draw it in red if selected, black otherwise
-                    filename = pathlib.Path(os.path.abspath(__file__)).parents[0] / "images" / (("promoted_" if piece.is_promoted() else "") + FILES[piece.symbol()[-1].lower()] + ".png")
+                    filename = (
+                        pathlib.Path(os.path.abspath(__file__)).parents[0]
+                        / "images"
+                        / (("promoted_" if piece.is_promoted() else "") + FILES[piece.symbol()[-1].lower()] + ".png")
+                    )
                     piece_image = pygame.image.load(filename)
-                    piece_image = pygame.transform.scale(piece_image, (int(0.8 * TILE_SIZE * 403/480), 0.8 * TILE_SIZE))
+                    piece_image = pygame.transform.scale(piece_image, (int(0.8 * TILE_SIZE * 403 / 480), 0.8 * TILE_SIZE))
                     if piece.color == 1:
                         piece_image = pygame.transform.rotate(piece_image, 180)
                     canvas.blit(piece_image, (x, y))
@@ -133,8 +141,8 @@ class ShogiEnv(gym.Env):
         # Draw the pieces in human's hands
         hand = counter_to_list(self.board.pieces_in_hand[0])
         for index, piece_number in enumerate(hand):
-            x = X_OFFSET + index * TILE_SIZE  + 0.1 * TILE_SIZE + int((480 - 403)/480/2 * TILE_SIZE)
-            y = (3 * Y_OFFSET - TILE_SIZE) / 2 + 9 * TILE_SIZE  + 0.1 * TILE_SIZE
+            x = X_OFFSET + index * TILE_SIZE + 0.1 * TILE_SIZE + int((480 - 403) / 480 / 2 * TILE_SIZE)
+            y = (3 * Y_OFFSET - TILE_SIZE) / 2 + 9 * TILE_SIZE + 0.1 * TILE_SIZE
             filename = pathlib.Path(os.path.abspath(__file__)).parents[0] / "images" / (FILES[PIECE_SYMBOLS[piece_number]] + ".png")
             piece_image = pygame.image.load(filename)
             piece_image = pygame.transform.scale(piece_image, (int(0.8 * TILE_SIZE * 403 / 480), 0.8 * TILE_SIZE))
@@ -143,8 +151,8 @@ class ShogiEnv(gym.Env):
         # Draw the pieces in IA's hands
         hand = counter_to_list(self.board.pieces_in_hand[0])
         for index, piece_number in enumerate(hand):
-            x = X_OFFSET + index * TILE_SIZE  + 0.1 * TILE_SIZE + int((480 - 403)/480/2 * TILE_SIZE)
-            y = (Y_OFFSET - TILE_SIZE) / 2  + 0.1 * TILE_SIZE
+            x = X_OFFSET + index * TILE_SIZE + 0.1 * TILE_SIZE + int((480 - 403) / 480 / 2 * TILE_SIZE)
+            y = (Y_OFFSET - TILE_SIZE) / 2 + 0.1 * TILE_SIZE
             filename = pathlib.Path(os.path.abspath(__file__)).parents[0] / "images" / (FILES[PIECE_SYMBOLS[piece_number]] + ".png")
             piece_image = pygame.image.load(filename)
             piece_image = pygame.transform.rotate(piece_image, 180)
@@ -155,16 +163,14 @@ class ShogiEnv(gym.Env):
             # The following line copies our drawings from `canvas` to the visible window
             self.window.blit(canvas, canvas.get_rect())
             pygame.event.pump()
-            pygame.display.set_caption(f'Shogi Env | Display time : {time.time() - start_time}')
+            pygame.display.set_caption(f"Shogi Env | Display time : {time.time() - start_time}")
             pygame.display.update()
 
             # We need to ensure that human-rendering occurs at the predefined framerate.
             # The following line will automatically add a delay to keep the framerate stable.
             self.clock.tick(self.metadata["render_fps"])
         else:  # rgb_array
-            return np.transpose(
-                np.array(pygame.surfarray.pixels3d(canvas)), axes=(1, 0, 2)
-            )
+            return np.transpose(np.array(pygame.surfarray.pixels3d(canvas)), axes=(1, 0, 2))
 
     def close(self):
         """
@@ -179,4 +185,5 @@ if __name__ == "__main__":
     env = ShogiEnv()
     env.render()
     import time
+
     time.sleep(10)

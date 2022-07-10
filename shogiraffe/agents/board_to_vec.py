@@ -1,7 +1,8 @@
-import shogi
-import numpy as np
-import time
 import math
+import time
+
+import numpy as np
+import shogi
 from numba import jit
 
 """
@@ -43,7 +44,8 @@ Structure of our numpy array :
 [541:784] : lowest-valued attacker of each square : (position_x, position_y, number_of_defenders)*81
 """
 
-PIECE_SYMBOLS = '.plnsgbrk'
+PIECE_SYMBOLS = ".plnsgbrk"
+
 
 def around(piece):
     """
@@ -54,24 +56,34 @@ def around(piece):
     :return surroundings: (list): the squares around the piece
     """
 
-    voisins = [piece - 10, piece - 9, piece - 8, piece - 1, piece + 1, piece + 8, piece + 9, piece + 10]
+    voisins = [
+        piece - 10,
+        piece - 9,
+        piece - 8,
+        piece - 1,
+        piece + 1,
+        piece + 8,
+        piece + 9,
+        piece + 10,
+    ]
     if piece == 0:
-        return([1, 9, 10])
+        return [1, 9, 10]
     if piece == 8:
-        return([7, 16, 17])
+        return [7, 16, 17]
     if piece == 72:
-        return([63, 64, 73])
+        return [63, 64, 73]
     if piece == 80:
-        return([70, 71, 79])
+        return [70, 71, 79]
     if piece < 8:
-        return(voisins[3:])
+        return voisins[3:]
     if piece > 72:
-        return(voisins[:5])
+        return voisins[:5]
     if piece % 9 == 0:
-        return([piece - 9, piece - 8, piece + 1, piece + 9, piece + 10])
+        return [piece - 9, piece - 8, piece + 1, piece + 9, piece + 10]
     if piece % 9 == 8:
-        return([piece - 10, piece - 9, piece - 1, piece + 8, piece + 9])
-    return(voisins)
+        return [piece - 10, piece - 9, piece - 1, piece + 8, piece + 9]
+    return voisins
+
 
 table_neighbours = []
 for i in range(80):
@@ -116,75 +128,71 @@ def board2vec(board):
     vector = [0 for i in range(784)]
 
     vector[0] = float(board.turn)
-    vector[1] = float(max(0, math.atan((board.move_number-10)/15)*2/3.142))
+    vector[1] = float(max(0, math.atan((board.move_number - 10) / 15) * 2 / 3.142))
 
     # We'll be scanning each square on the board
     for i in range(81):
 
-        case = 9*(i%9)+i//9
+        case = 9 * (i % 9) + i // 9
 
         piece = board.piece_at(case)
 
         # If there's a piece :
-        if piece != None :
+        if piece != None:
 
-            if piece.color == 0 :
+            if piece.color == 0:
 
-                if piece.symbol()[-1] == 'P':
-                    vector[2] += 1/18
+                if piece.symbol()[-1] == "P":
+                    vector[2] += 1 / 18
 
-                    vector[16+pawn_index*5] = 1
-                    vector[16+pawn_index*5+1] = 0
-                    vector[16+pawn_index*5+2] = (case%9)/8
-                    vector[16+pawn_index*5+3] = (case//9)/8
-                    vector[16+pawn_index*5+4] = 1*piece.is_promoted()
+                    vector[16 + pawn_index * 5] = 1
+                    vector[16 + pawn_index * 5 + 1] = 0
+                    vector[16 + pawn_index * 5 + 2] = (case % 9) / 8
+                    vector[16 + pawn_index * 5 + 3] = (case // 9) / 8
+                    vector[16 + pawn_index * 5 + 4] = 1 * piece.is_promoted()
                     pawn_index += 1
 
+                if piece.symbol()[-1] == "L":
+                    vector[3] += 1 / 4
 
-                if piece.symbol()[-1] == 'L':
-                    vector[3] += 1/4
-
-                    vector[106+lance_index*5] = 1
-                    vector[106+lance_index*5+1] = 0
-                    vector[106+lance_index*5+2] = (case%9)/8
-                    vector[106+lance_index*5+3] = (case//9)/8
-                    vector[106+lance_index*5+4] = 1*piece.is_promoted()
+                    vector[106 + lance_index * 5] = 1
+                    vector[106 + lance_index * 5 + 1] = 0
+                    vector[106 + lance_index * 5 + 2] = (case % 9) / 8
+                    vector[106 + lance_index * 5 + 3] = (case // 9) / 8
+                    vector[106 + lance_index * 5 + 4] = 1 * piece.is_promoted()
                     lance_index += 1
 
+                if piece.symbol()[-1] == "N":
+                    vector[4] += 1 / 4
 
-                if piece.symbol()[-1] == 'N':
-                    vector[4] += 1/4
-
-                    vector[126+knight_index*5] = 1
-                    vector[126+knight_index*5+1] = 0
-                    vector[126+knight_index*5+2] = (case%9)/8
-                    vector[126+knight_index*5+3] = (case//9)/8
-                    vector[126+knight_index*5+4] = 1*piece.is_promoted()
+                    vector[126 + knight_index * 5] = 1
+                    vector[126 + knight_index * 5 + 1] = 0
+                    vector[126 + knight_index * 5 + 2] = (case % 9) / 8
+                    vector[126 + knight_index * 5 + 3] = (case // 9) / 8
+                    vector[126 + knight_index * 5 + 4] = 1 * piece.is_promoted()
                     knight_index += 1
 
-                if piece.symbol()[-1] == 'S':
-                    vector[5] += 1/4
+                if piece.symbol()[-1] == "S":
+                    vector[5] += 1 / 4
 
-                    vector[146+silver_index*5] = 1
-                    vector[146+silver_index*5+1] = 0
-                    vector[146+silver_index*5+2] = (case%9)/8
-                    vector[146+silver_index*5+3] = (case//9)/8
-                    vector[146+silver_index*5+4] = 1*piece.is_promoted()
+                    vector[146 + silver_index * 5] = 1
+                    vector[146 + silver_index * 5 + 1] = 0
+                    vector[146 + silver_index * 5 + 2] = (case % 9) / 8
+                    vector[146 + silver_index * 5 + 3] = (case // 9) / 8
+                    vector[146 + silver_index * 5 + 4] = 1 * piece.is_promoted()
                     silver_index += 1
 
+                if piece.symbol()[-1] == "G":
+                    vector[6] += 1 / 4
 
-                if piece.symbol()[-1] == 'G':
-                    vector[6] += 1/4
-
-                    vector[166+gold_index*4] = 1
-                    vector[166+gold_index*4+1] = 0
-                    vector[166+gold_index*4+2] = (case%9)/8
-                    vector[166+gold_index*4+3] = (case//9)/8
+                    vector[166 + gold_index * 4] = 1
+                    vector[166 + gold_index * 4 + 1] = 0
+                    vector[166 + gold_index * 4 + 2] = (case % 9) / 8
+                    vector[166 + gold_index * 4 + 3] = (case // 9) / 8
                     gold_index += 1
 
-
-                if piece.symbol()[-1] == 'B':
-                    vector[7] += 1/2
+                if piece.symbol()[-1] == "B":
+                    vector[7] += 1 / 2
 
                     upleft = 0
                     upright = 0
@@ -193,50 +201,49 @@ def board2vec(board):
 
                     # Check how far you can go left and up :
                     j = 0
-                    for j in range(1,min(i%9+1, i//9+1)) :
-                        if board.piece_at(i-10*j) != None:
-                            j-=1*board.piece_at(i-10*j).color
+                    for j in range(1, min(i % 9 + 1, i // 9 + 1)):
+                        if board.piece_at(i - 10 * j) != None:
+                            j -= 1 * board.piece_at(i - 10 * j).color
                             break
-                    upleft+=j
+                    upleft += j
 
                     # Check how far you can go right and down :
                     j = 0
-                    for j in range(1, min(9-i%9-1, 9-i//9-1)) :
-                        if board.piece_at(i+10*j) != None:
-                            j-=1*board.piece_at(i+10*j).color
+                    for j in range(1, min(9 - i % 9 - 1, 9 - i // 9 - 1)):
+                        if board.piece_at(i + 10 * j) != None:
+                            j -= 1 * board.piece_at(i + 10 * j).color
                             break
-                    downright+=j
+                    downright += j
 
                     # Check how far you can go right and up :
                     j = 0
-                    for j in range(1,min(9-i%9-1,i//9+1)) :
-                        if board.piece_at(i-8*j) != None:
-                            j-=1*board.piece_at(i-8*j).color
+                    for j in range(1, min(9 - i % 9 - 1, i // 9 + 1)):
+                        if board.piece_at(i - 8 * j) != None:
+                            j -= 1 * board.piece_at(i - 8 * j).color
                             break
-                    upright+=j
+                    upright += j
 
                     # Check how far you can go left and down :
                     j = 0
-                    for j in range(1,min(i%9+1, 9-i//9-1)) :
-                        if board.piece_at(i+8*j) != None:
-                            j-=1*board.piece_at(i+8*j).color
+                    for j in range(1, min(i % 9 + 1, 9 - i // 9 - 1)):
+                        if board.piece_at(i + 8 * j) != None:
+                            j -= 1 * board.piece_at(i + 8 * j).color
                             break
-                    downleft+=j
+                    downleft += j
 
-                    vector[182+bishop_index*9] = 1
-                    vector[182+bishop_index*9+1] = 0
-                    vector[182+bishop_index*9+2] = (case%9)/8
-                    vector[182+bishop_index*9+3] = (case//9)/8
-                    vector[182+bishop_index*9+4] = upleft
-                    vector[182+bishop_index*9+5] = downright
-                    vector[182+bishop_index*9+6] = upright
-                    vector[182+bishop_index*9+7] = downleft
-                    vector[182+bishop_index*9+8] = 1*piece.is_promoted()
+                    vector[182 + bishop_index * 9] = 1
+                    vector[182 + bishop_index * 9 + 1] = 0
+                    vector[182 + bishop_index * 9 + 2] = (case % 9) / 8
+                    vector[182 + bishop_index * 9 + 3] = (case // 9) / 8
+                    vector[182 + bishop_index * 9 + 4] = upleft
+                    vector[182 + bishop_index * 9 + 5] = downright
+                    vector[182 + bishop_index * 9 + 6] = upright
+                    vector[182 + bishop_index * 9 + 7] = downleft
+                    vector[182 + bishop_index * 9 + 8] = 1 * piece.is_promoted()
                     bishop_index += 1
 
-
-                if piece.symbol()[-1] == 'R':
-                    vector[8] += 1/2
+                if piece.symbol()[-1] == "R":
+                    vector[8] += 1 / 2
 
                     left = 0
                     right = 0
@@ -245,109 +252,104 @@ def board2vec(board):
 
                     # Check how far you can go left :
                     j = 0
-                    for j in range(1,i%9+1) :
-                        if board.piece_at(i-j) != None:
-                            j-=1*board.piece_at(i-j).color
+                    for j in range(1, i % 9 + 1):
+                        if board.piece_at(i - j) != None:
+                            j -= 1 * board.piece_at(i - j).color
                             break
-                    left+=j
+                    left += j
 
                     # Check how far you can go right :
                     j = 0
-                    for j in range(1, 9-i%9-1) :
-                        if board.piece_at(i+j) != None:
-                            j-=1*board.piece_at(i+j).color
+                    for j in range(1, 9 - i % 9 - 1):
+                        if board.piece_at(i + j) != None:
+                            j -= 1 * board.piece_at(i + j).color
                             break
-                    right+=j
+                    right += j
 
                     # Check how far you can go up :
                     j = 0
-                    for j in range(1,i//9+1) :
-                        if board.piece_at(i-9*j) != None:
-                            j-=1*board.piece_at(i-9*j).color
+                    for j in range(1, i // 9 + 1):
+                        if board.piece_at(i - 9 * j) != None:
+                            j -= 1 * board.piece_at(i - 9 * j).color
                             break
-                    up+=j
+                    up += j
 
                     # Check how far you can go down :
                     j = 0
-                    for j in range(1,9-i//9-1) :
-                        if board.piece_at(i+9*j) != None:
-                            j-=1*board.piece_at(i+9*j).color
+                    for j in range(1, 9 - i // 9 - 1):
+                        if board.piece_at(i + 9 * j) != None:
+                            j -= 1 * board.piece_at(i + 9 * j).color
                             break
-                    down+=j
+                    down += j
 
-                    vector[200+rook_index*9] = 1
-                    vector[200+rook_index*9+1] = 0
-                    vector[200+rook_index*9+2] = (case%9)/8
-                    vector[200+rook_index*9+3] = (case//9)/8
-                    vector[200+rook_index*9+4] = left
-                    vector[200+rook_index*9+5] = right
-                    vector[200+rook_index*9+6] = up
-                    vector[200+rook_index*9+7] = down
-                    vector[200+rook_index*9+8] = 1*piece.is_promoted()
+                    vector[200 + rook_index * 9] = 1
+                    vector[200 + rook_index * 9 + 1] = 0
+                    vector[200 + rook_index * 9 + 2] = (case % 9) / 8
+                    vector[200 + rook_index * 9 + 3] = (case // 9) / 8
+                    vector[200 + rook_index * 9 + 4] = left
+                    vector[200 + rook_index * 9 + 5] = right
+                    vector[200 + rook_index * 9 + 6] = up
+                    vector[200 + rook_index * 9 + 7] = down
+                    vector[200 + rook_index * 9 + 8] = 1 * piece.is_promoted()
                     rook_index += 1
 
-                if piece.symbol()[-1]=='K':
-                    vector[218] = (case%9)/8
-                    vector[219] = (case//9)/8
+                if piece.symbol()[-1] == "K":
+                    vector[218] = (case % 9) / 8
+                    vector[219] = (case // 9) / 8
 
+            elif piece.color == 1:
 
-            elif piece.color == 1 :
+                if piece.symbol()[-1] == "p":
+                    vector[9] += 1 / 16
 
-                if piece.symbol()[-1] == 'p':
-                    vector[9] += 1/16
-
-                    vector[16+pawn_index*5] = 1
-                    vector[16+pawn_index*5+1] = 1
-                    vector[16+pawn_index*5+2] = (case%9)/8
-                    vector[16+pawn_index*5+3] = (case//9)/8
-                    vector[16+pawn_index*5+4] = 1*piece.is_promoted()
+                    vector[16 + pawn_index * 5] = 1
+                    vector[16 + pawn_index * 5 + 1] = 1
+                    vector[16 + pawn_index * 5 + 2] = (case % 9) / 8
+                    vector[16 + pawn_index * 5 + 3] = (case // 9) / 8
+                    vector[16 + pawn_index * 5 + 4] = 1 * piece.is_promoted()
                     pawn_index += 1
 
-                if piece.symbol()[-1] == 'l':
-                    vector[10] += 1/4
+                if piece.symbol()[-1] == "l":
+                    vector[10] += 1 / 4
 
-                    vector[106+lance_index*5] = 1
-                    vector[106+lance_index*5+1] = 1
-                    vector[106+lance_index*5+2] = (case%9)/8
-                    vector[106+lance_index*5+3] = (case//9)/8
-                    vector[106+lance_index*5+4] = 1*piece.is_promoted()
+                    vector[106 + lance_index * 5] = 1
+                    vector[106 + lance_index * 5 + 1] = 1
+                    vector[106 + lance_index * 5 + 2] = (case % 9) / 8
+                    vector[106 + lance_index * 5 + 3] = (case // 9) / 8
+                    vector[106 + lance_index * 5 + 4] = 1 * piece.is_promoted()
                     lance_index += 1
 
+                if piece.symbol()[-1] == "n":
+                    vector[11] += 1 / 4
 
-                if piece.symbol()[-1] == 'n':
-                    vector[11] += 1/4
-
-                    vector[126+knight_index*5] = 1
-                    vector[126+knight_index*5+1] = 1
-                    vector[126+knight_index*5+2] = (case%9)/8
-                    vector[126+knight_index*5+3] = (case//9)/8
-                    vector[126+knight_index*5+4] = 1*piece.is_promoted()
+                    vector[126 + knight_index * 5] = 1
+                    vector[126 + knight_index * 5 + 1] = 1
+                    vector[126 + knight_index * 5 + 2] = (case % 9) / 8
+                    vector[126 + knight_index * 5 + 3] = (case // 9) / 8
+                    vector[126 + knight_index * 5 + 4] = 1 * piece.is_promoted()
                     knight_index += 1
 
+                if piece.symbol()[-1] == "s":
+                    vector[12] += 1 / 4
 
-                if piece.symbol()[-1] == 's':
-                    vector[12] += 1/4
-
-                    vector[146+silver_index*5] = 1
-                    vector[146+silver_index*5+1] = 1
-                    vector[146+silver_index*5+2] = (case%9)/8
-                    vector[146+silver_index*5+3] = (case//9)/8
-                    vector[146+silver_index*5+4] = 1*piece.is_promoted()
+                    vector[146 + silver_index * 5] = 1
+                    vector[146 + silver_index * 5 + 1] = 1
+                    vector[146 + silver_index * 5 + 2] = (case % 9) / 8
+                    vector[146 + silver_index * 5 + 3] = (case // 9) / 8
+                    vector[146 + silver_index * 5 + 4] = 1 * piece.is_promoted()
                     silver_index += 1
 
+                if piece.symbol()[-1] == "g":
+                    vector[13] += 1 / 4
 
-                if piece.symbol()[-1] == 'g':
-                    vector[13] += 1/4
-
-                    vector[166+gold_index*4] = 1
-                    vector[166+gold_index*4+1] = 1
-                    vector[166+gold_index*4+2] = (case%9)/8
-                    vector[166+gold_index*4+3] = (case//9)/8
+                    vector[166 + gold_index * 4] = 1
+                    vector[166 + gold_index * 4 + 1] = 1
+                    vector[166 + gold_index * 4 + 2] = (case % 9) / 8
+                    vector[166 + gold_index * 4 + 3] = (case // 9) / 8
                     gold_index += 1
 
-
-                if piece.symbol()[-1] == 'b':
-                    vector[14] += 1/2
+                if piece.symbol()[-1] == "b":
+                    vector[14] += 1 / 2
 
                     upleft = 0
                     upright = 0
@@ -356,51 +358,49 @@ def board2vec(board):
 
                     # Check how far you can go left and up :
                     j = 0
-                    for j in range(1,min(i%9+1, i//9+1)) :
-                        if board.piece_at(i-10*j) != None:
-                            j-=1-1*board.piece_at(i-10*j).color
+                    for j in range(1, min(i % 9 + 1, i // 9 + 1)):
+                        if board.piece_at(i - 10 * j) != None:
+                            j -= 1 - 1 * board.piece_at(i - 10 * j).color
                             break
-                    upleft+=j
+                    upleft += j
 
                     # Check how far you can go right and down :
                     j = 0
-                    for j in range(1, min(9-i%9-1, 9-i//9-1)) :
-                        if board.piece_at(i+10*j) != None:
-                            j-=1-1*board.piece_at(i+10*j).color
+                    for j in range(1, min(9 - i % 9 - 1, 9 - i // 9 - 1)):
+                        if board.piece_at(i + 10 * j) != None:
+                            j -= 1 - 1 * board.piece_at(i + 10 * j).color
                             break
-                    downright+=j
+                    downright += j
 
                     # Check how far you can go right and up :
                     j = 0
-                    for j in range(1,min(9-i%9-1,i//9+1)) :
-                        if board.piece_at(i-8*j) != None:
-                            j-=1-1*board.piece_at(i-8*j).color
+                    for j in range(1, min(9 - i % 9 - 1, i // 9 + 1)):
+                        if board.piece_at(i - 8 * j) != None:
+                            j -= 1 - 1 * board.piece_at(i - 8 * j).color
                             break
-                    upright+=j
+                    upright += j
 
                     # Check how far you can go left and down :
                     j = 0
-                    for j in range(1,min(i%9+1, 9-i//9-1)) :
-                        if board.piece_at(i+8*j) != None:
-                            j-=1-1*board.piece_at(i+8*j).color
+                    for j in range(1, min(i % 9 + 1, 9 - i // 9 - 1)):
+                        if board.piece_at(i + 8 * j) != None:
+                            j -= 1 - 1 * board.piece_at(i + 8 * j).color
                             break
-                    downleft+=j
+                    downleft += j
 
-                    vector[182+bishop_index*9] = 1
-                    vector[182+bishop_index*9+1] = 1
-                    vector[182+bishop_index*9+2] = (case%9)/8
-                    vector[182+bishop_index*9+3] = (case//9)/8
-                    vector[182+bishop_index*9+4] = upleft
-                    vector[182+bishop_index*9+5] = downright
-                    vector[182+bishop_index*9+6] = upright
-                    vector[182+bishop_index*9+7] = downleft
-                    vector[182+bishop_index*9+8] = 1*piece.is_promoted()
+                    vector[182 + bishop_index * 9] = 1
+                    vector[182 + bishop_index * 9 + 1] = 1
+                    vector[182 + bishop_index * 9 + 2] = (case % 9) / 8
+                    vector[182 + bishop_index * 9 + 3] = (case // 9) / 8
+                    vector[182 + bishop_index * 9 + 4] = upleft
+                    vector[182 + bishop_index * 9 + 5] = downright
+                    vector[182 + bishop_index * 9 + 6] = upright
+                    vector[182 + bishop_index * 9 + 7] = downleft
+                    vector[182 + bishop_index * 9 + 8] = 1 * piece.is_promoted()
                     bishop_index += 1
 
-
-
-                if piece.symbol()[-1] == 'r':
-                    vector[15] += 1/2
+                if piece.symbol()[-1] == "r":
+                    vector[15] += 1 / 2
 
                     left = 0
                     right = 0
@@ -409,53 +409,50 @@ def board2vec(board):
 
                     # Check how far you can go left :
                     j = 0
-                    for j in range(1,i%9+1) :
-                        if board.piece_at(i-j) != None:
-                            j-=1-1*board.piece_at(i-j).color
+                    for j in range(1, i % 9 + 1):
+                        if board.piece_at(i - j) != None:
+                            j -= 1 - 1 * board.piece_at(i - j).color
                             break
-                    left+=j
+                    left += j
 
                     # Check how far you can go right :
                     j = 0
-                    for j in range(1, 9-i%9-1) :
-                        if board.piece_at(i+j) != None:
-                            j-=1-1*board.piece_at(i+j).color
+                    for j in range(1, 9 - i % 9 - 1):
+                        if board.piece_at(i + j) != None:
+                            j -= 1 - 1 * board.piece_at(i + j).color
                             break
-                    right+=j
+                    right += j
 
                     # Check how far you can go up :
                     j = 0
-                    for j in range(1,i//9+1) :
-                        if board.piece_at(i-9*j) != None:
-                            j-=1-1*board.piece_at(i-9*j).color
+                    for j in range(1, i // 9 + 1):
+                        if board.piece_at(i - 9 * j) != None:
+                            j -= 1 - 1 * board.piece_at(i - 9 * j).color
                             break
-                    up+=j
+                    up += j
 
                     # Check how far you can go down :
                     j = 0
-                    for j in range(1,9-i//9-1) :
-                        if board.piece_at(i+9*j) != None:
-                            j-=1-1*board.piece_at(i+9*j).color
+                    for j in range(1, 9 - i // 9 - 1):
+                        if board.piece_at(i + 9 * j) != None:
+                            j -= 1 - 1 * board.piece_at(i + 9 * j).color
                             break
-                    down+=j
+                    down += j
 
-                    vector[200+rook_index*9] = 1
-                    vector[200+rook_index*9+1] = 1
-                    vector[200+rook_index*9+2] = (case%9)/8
-                    vector[200+rook_index*9+3] = (case//9)/8
-                    vector[200+rook_index*9+4] = left
-                    vector[200+rook_index*9+5] = right
-                    vector[200+rook_index*9+6] = up
-                    vector[200+rook_index*9+7] = down
-                    vector[200+rook_index*9+8] = 1*piece.is_promoted()
+                    vector[200 + rook_index * 9] = 1
+                    vector[200 + rook_index * 9 + 1] = 1
+                    vector[200 + rook_index * 9 + 2] = (case % 9) / 8
+                    vector[200 + rook_index * 9 + 3] = (case // 9) / 8
+                    vector[200 + rook_index * 9 + 4] = left
+                    vector[200 + rook_index * 9 + 5] = right
+                    vector[200 + rook_index * 9 + 6] = up
+                    vector[200 + rook_index * 9 + 7] = down
+                    vector[200 + rook_index * 9 + 8] = 1 * piece.is_promoted()
                     rook_index += 1
 
-
-                if piece.symbol()[-1]=='k':
-                    vector[220] = (case%9)/8
-                    vector[221] = (case//9)/8
-
-
+                if piece.symbol()[-1] == "k":
+                    vector[220] = (case % 9) / 8
+                    vector[221] = (case // 9) / 8
 
     pieces = board.pieces_in_hand
 
@@ -469,29 +466,28 @@ def board2vec(board):
     counter_bishop = 0
     counter_rook = 0
 
-    for p in pieces[0] :
-        if PIECE_SYMBOLS[p] == 'p' :
+    for p in pieces[0]:
+        if PIECE_SYMBOLS[p] == "p":
             vector[222 + counter_pawn] = 1
             counter_pawn += 1
-        if PIECE_SYMBOLS[p] == 'l' :
+        if PIECE_SYMBOLS[p] == "l":
             vector[240 + counter_lance] = 1
             counter_lance += 1
-        if PIECE_SYMBOLS[p] == 'k' :
+        if PIECE_SYMBOLS[p] == "k":
             vector[244 + counter_knight] = 1
             counter_knight += 1
-        if PIECE_SYMBOLS[p] == 's' :
+        if PIECE_SYMBOLS[p] == "s":
             vector[248 + counter_silver] = 1
             counter_silver += 1
-        if PIECE_SYMBOLS[p] == 'g' :
+        if PIECE_SYMBOLS[p] == "g":
             vector[252 + counter_gold] = 1
             counter_gold += 1
-        if PIECE_SYMBOLS[p] == 'b' :
+        if PIECE_SYMBOLS[p] == "b":
             vector[256 + counter_bishop] = 1
             counter_bishop += 1
-        if PIECE_SYMBOLS[p] == 'r' :
+        if PIECE_SYMBOLS[p] == "r":
             vector[258 + counter_rook] = 1
             counter_rook += 1
-
 
     counter_pawn = 0
     counter_lance = 0
@@ -501,33 +497,31 @@ def board2vec(board):
     counter_bishop = 0
     counter_rook = 0
 
-
     # For each piece in black's hands
-    for p in pieces[1] :
-        if PIECE_SYMBOLS[p] == 'P' :
+    for p in pieces[1]:
+        if PIECE_SYMBOLS[p] == "P":
             vector[260 + counter_pawn] = 1
             counter_pawn += 1
-        if PIECE_SYMBOLS[p] == 'p' :
+        if PIECE_SYMBOLS[p] == "p":
             vector[278 + counter_lance] = 1
             counter_lance += 1
-        if PIECE_SYMBOLS[p] == 'k' :
+        if PIECE_SYMBOLS[p] == "k":
             vector[282 + counter_knight] = 1
             counter_knight += 1
-        if PIECE_SYMBOLS[p] == 's' :
+        if PIECE_SYMBOLS[p] == "s":
             vector[286 + counter_silver] = 1
             counter_silver += 1
-        if PIECE_SYMBOLS[p] == 'g' :
+        if PIECE_SYMBOLS[p] == "g":
             vector[290 + counter_gold] = 1
             counter_gold += 1
-        if PIECE_SYMBOLS[p] == 'b' :
+        if PIECE_SYMBOLS[p] == "b":
             vector[294 + counter_bishop] = 1
             counter_bishop += 1
-        if PIECE_SYMBOLS[p] == 'r' :
+        if PIECE_SYMBOLS[p] == "r":
             vector[296 + counter_rook] = 1
             counter_rook += 1
 
-
-    order = {None : 9, 'p' : 1, 'l' : 2, 'n': 3, 's':4, 'g':5, 'r' :6, 'b' :7, 'k':8}
+    order = {None: 9, "p": 1, "l": 2, "n": 3, "s": 4, "g": 5, "r": 6, "b": 7, "k": 8}
 
     for i in range(81):
         attacker = None
@@ -556,8 +550,8 @@ def board2vec(board):
 
 
 # Tests
-if __name__ == "__main__" :
-    a = shogi.Board('lnsgk2nl/1r4gs1/p1pppp1pp/1p4p2/7P1/2P6/PP1PPPP1P/1SG4R1/LN2KGSNL b PLKSGBRb 10')
+if __name__ == "__main__":
+    a = shogi.Board("lnsgk2nl/1r4gs1/p1pppp1pp/1p4p2/7P1/2P6/PP1PPPP1P/1SG4R1/LN2KGSNL b PLKSGBRb 10")
     t = time.time()
     b = board2vec(a)
-    print("Successfully vectorized the board as input in", time.time()-t, "seconds !")
+    print("Successfully vectorized the board as input in", time.time() - t, "seconds !")
