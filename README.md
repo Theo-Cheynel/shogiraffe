@@ -1,8 +1,8 @@
-# kinetix-scenegraph
+# shogiraffe
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Shogiraffe is a 
+Shogiraffe is a shogi AI inspired by Matthew Lai's thesis called Giraffe (link).
 
 ## Documentation
 The documentation is coming soon !
